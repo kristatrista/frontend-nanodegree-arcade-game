@@ -1,10 +1,10 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(x,y,speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-    // this.x = x;
-    // this.y = y;
-    // this.speed = speed;
+    this.x = x;
+    this.y = y;
+    this.speed = speed;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
@@ -16,7 +16,7 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x += this.speed * dt;
+    // this.x += this.speed * dt;
 
     //update location
 
@@ -26,21 +26,39 @@ Enemy.prototype.update = function(dt) {
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get('images/char-horn-girl.png'), this.x, this.y);
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-
-var Player = function(){
-  //methods
-  this.x = 20;
-  this.y = 0;
-  this.sprite = 'images/char-horn-girl.png';
+var Player = function(x,y) {
+    // Variables applied to each of our instances go here,
+    // we've provided one for you to get started
+    this.x = x;
+    this.y = y;
+    // this.speed = speed;
+    // The image/sprite for our enemies, this uses
+    // a helper we've provided to easily load images
+    this.sprite = 'images/char-horn-girl.png';
 };
 
-var player = new Player();
+Player.prototype.update = function(dt) {
+
+};
+
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+Player.handleInput = function() {
+
+};
+
+// var player = new Player();
+var player = new Player(0, 0);
+
+var allEnemies = [new Enemy(400,300), new Enemy(-400, 300), new Enemy(200, 300)];
 
   //update postition
   //collision check
