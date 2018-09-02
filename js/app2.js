@@ -31,7 +31,7 @@ Enemy.prototype.update = function(dt) {
         player.y < this.y + 25 &&
         30 + player.y > this.y) {
         player.x = 200;
-        player.y = 380;
+        player.y = 450;
 
 
     }
@@ -54,8 +54,8 @@ var Player = function(x, y, speed) {
 
 Player.prototype.update = function() {
     // Prevent player from moving beyond canvas wall boundaries
-    if (this.y > 380) {
-        this.y = 380;
+    if (this.y > 390) {
+        this.y = 390;
     }
     if (this.x > 400) {
         this.x = 400;
@@ -65,9 +65,13 @@ Player.prototype.update = function() {
     }
 
     // Check for player reaching top of canvas and winning the game
-    if (this.y < 0) {
+    if (this.y < -20) {
+
+
         this.x = 200;
-        this.y = 380;
+        this.y = 390;
+
+
     }
 };
 
@@ -99,13 +103,14 @@ var allEnemies = [];
 
 // Position "y" where  enemies are created
 var enemyPosition = [60, 140, 220];
-var player = new Player(200, 350, 50);
+var player = new Player(200, 450, 50);
 var enemy;
 
-enemyPosition.forEach(function(posY) {
-    enemy = new Enemy(0, posY, 90 + Math.floor(Math.random() * 510));
-    allEnemies.push(enemy);
-});
+// enemyPosition.forEach(function(posY) {
+//     enemy = new Enemy(0, posY, 90 + Math.floor(Math.random() * 510));
+//     allEnemies.push(enemy);
+//     console.log("new bug");
+// });
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
