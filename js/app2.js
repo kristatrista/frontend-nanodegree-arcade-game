@@ -1,4 +1,4 @@
-Solution code
+Solu
 
 
 // Enemies our player must avoid
@@ -105,15 +105,15 @@ Player.prototype.handleInput = function(keyPress) {
 var allEnemies = [];
 
 // Position "y" where  enemies are created
-var enemyPosition = [60, 140, 220];
+var enemyPosition = [220, 140, 60];
 var player = new Player(200, 450, 50);
 var enemy;
 
-// enemyPosition.forEach(function(posY) {
-//     enemy = new Enemy(0, posY, 90 + Math.floor(Math.random() * 510));
-//     allEnemies.push(enemy);
-//     console.log("new bug");
-// });
+enemyPosition.forEach(function(posY) {
+    enemy = new Enemy(0, posY, 90 + Math.floor(Math.random() * 510));
+    allEnemies.push(enemy);
+    console.log("new bug");
+});
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.

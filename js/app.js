@@ -16,13 +16,15 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    // this.x += this.speed * dt;
-    
+    this.x += this.speed * dt;
+
     //update location
     if(this.x < 600){
-      this.x += 200 * dt;
-    }else{
-      this.x = -40;
+      this.x += 5;
+      this.speed = 1 + Math.floor(Math.random() * 1);
+    }
+    else{
+      this.x = -90;
     }
     //restart at beggining of board once at the end
     //handle collision with player, reset the game
@@ -104,11 +106,22 @@ function reset(){
 var step = 83;
 var jump = 100;
 // Now instantiate your objects.
+// Place the player object in a variable called player
 var player = new Player(202,400 );
 // Place all enemy objects in an array called allEnemies
-var allEnemies = [new Enemy(40, 220), new Enemy(-30, 60), new Enemy(0, 140)];
-// Place the player object in a variable called player
-// var enemy;
+var allEnemies = [];
+
+//dynamilcally loop through each enemy and add to array
+var enemyPos =[60,140, 220];
+
+enemyPos.forEach(function(posY) {
+
+  var enemy = new Enemy(0, posY, 200 + Math.floor(Math.random() * 1));
+  allEnemies.push(enemy);
+});
+
+
+
 
 
 // This listens for key presses and sends the keys to your
