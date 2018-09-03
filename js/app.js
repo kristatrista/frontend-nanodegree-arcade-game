@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-var Enemy = function(x,y,speed) {
+var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     this.x = x;
@@ -19,21 +19,20 @@ Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt;
 
     //update location
-    if(this.x < 600){
-      this.x += 5;
-      this.speed = 1 + Math.floor(Math.random() * 1);
-    }
-    else{
-      this.x = -90;
+    if (this.x < 600) {
+        this.x += 5;
+        this.speed = 1 + Math.floor(Math.random() * 1);
+    } else {
+        this.x = -90;
     }
     //restart at beggining of board once at the end
     //handle collision with player, reset the game
-    if(player.x < this.x + 50 &&
-      player.x + 35 > this.x &&
-      player.y < this.y +20 &&
-      30 + player.y > this.y){
-      console.log('hit');
-    reset();
+    if (player.x < this.x + 50 &&
+        player.x + 35 > this.x &&
+        player.y < this.y + 20 &&
+        30 + player.y > this.y) {
+        console.log('hit');
+        reset();
     }
 
 
@@ -47,7 +46,7 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function(x,y) {
+var Player = function(x, y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     this.x = x;
@@ -59,23 +58,23 @@ var Player = function(x,y) {
 };
 
 Player.prototype.update = function(dt) {
-  //contain player within board
-  if( this.x < 0){
-    this.x = 0;
-    console.log(this.x);
-  }
-if( this.x > 400){
-  console.log(this.x);
-  this.x = 400;
-}
-if(this.y > 400){
-this.y = 400;
-}
-//reset player to start after game is won
-  if( this.y < 0){
-    alert("YOU WON!");
-    reset();
-  }
+    //contain player within board
+    if (this.x < 0) {
+        this.x = 0;
+        console.log(this.x);
+    }
+    if (this.x > 400) {
+        console.log(this.x);
+        this.x = 400;
+    }
+    if (this.y > 400) {
+        this.y = 400;
+    }
+    //reset player to start after game is won
+    if (this.y < 0) {
+        alert("YOU WON!");
+        reset();
+    }
 };
 
 Player.prototype.render = function() {
@@ -83,43 +82,43 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.handleInput = function(input) {
-  switch (input) {
-      case 'left':
-          this.x -= jump;
-          break;
-      case 'up':
-          this.y -= step;
-          break;
-      case 'right':
-          this.x += jump;
-          break;
-      case 'down':
-          this.y += step;
-          break;
-  }
+    switch (input) {
+        case 'left':
+            this.x -= jump;
+            break;
+        case 'up':
+            this.y -= step;
+            break;
+        case 'right':
+            this.x += jump;
+            break;
+        case 'down':
+            this.y += step;
+            break;
+    }
 
 };
-function reset(){
-  player.x = 202;
-  player.y = 400;
+
+function reset() {
+    player.x = 202;
+    player.y = 400;
 };
 var step = 83;
 var jump = 100;
 // Now instantiate your objects.
 // Place the player object in a variable called player
-var player = new Player(202,400 );
+var player = new Player(202, 400);
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
 
 //dynamilcally loop through each enemy and add to array
-var enemyPos =[60,140, 220];
+var enemyPos = [60, 140, 220];
 
 enemyPos.forEach(function(posY) {
 
-  var enemy = new Enemy(0, posY, 200 + Math.floor(Math.random() * 1));
-  allEnemies.push(enemy);
+    var enemy = new Enemy(0, posY, 200 + Math.floor(Math.random() * 1));
+    allEnemies.push(enemy);
 });
-
 
 
 
